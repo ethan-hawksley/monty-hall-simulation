@@ -1,6 +1,7 @@
 use rand::Rng;
 use std::io::{self, BufRead};
 
+#[derive(Clone)]
 enum Items {
     Goat,
     Car,
@@ -12,13 +13,8 @@ enum Strategy {
 }
 
 fn simulate(strategy: Strategy) -> bool {
-    let mut doors: Vec<_>;
-    match rand::thread_rng().gen_range(0..=2) {
-        0 => doors = vec![Items::Car, Items::Goat, Items::Goat],
-        1 => doors = vec![Items::Goat, Items::Car, Items::Goat],
-        2 => doors = vec![Items::Goat, Items::Goat, Items::Car],
-        _ => panic!(),
-    }
+    let mut doors = vec![Items::Goat; 3];
+    doors[rand::thread_rng().gen_range(0..=2)] = Items::Car;
 
     let choice = rand::thread_rng().gen_range(0..=2);
     doors.remove(choice);

@@ -35,7 +35,7 @@ fn main() {
     let mut switch_successes = 0;
     let mut stay_successes = 0;
 
-    println!("How many iterations should be ran?");
+    println!("How many iterations should be run?");
     let mut line = String::new();
     let stdin = io::stdin();
     stdin
